@@ -23,7 +23,7 @@ public class TransactionController {
     }
 
     @GetMapping("balance")
-    public Transactions getBalance(){
-        return transactionService.getTransactionById("3");
+    public Transactions getBalance(@PathVariable("id")String id){
+        return transactionService.getTransactionById(id);
     }
 }
