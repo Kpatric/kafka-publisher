@@ -11,7 +11,7 @@ public class TransactionService {
                 .transactionId("3")
                 .serviceName("cdp")
                 .amount("500")
-                .charges("600")
+                .charges("344")
                 .build();
     }
 }
