@@ -1,6 +1,7 @@
 package com.kafka.kafkapublisher.controllers;
 
 import com.kafka.kafkapublisher.models.Transactions;
+import com.kafka.kafkapublisher.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -10,11 +11,19 @@ import org.springframework.web.bind.annotation.*;
 public class TransactionController {
 
     @Autowired
-    private KafkaTemplate<String, Object> kafkaTemplate;
+    private TransactionService transactionService;
+
+    @Autowired
+    private KafkaTemplate<String, Transactions> kafkaTemplate;
 
     @PostMapping("transaction")
     public String getTransactions(@RequestBody Transactions message) {
         kafkaTemplate.send("Payments", message);
         return "Message published successfully to newtopic!";
+    }
+
+    @GetMapping("balance")
+    public Transactions getBalance(){
+        return transactionService.getTransactionById("3");
     }
 }
