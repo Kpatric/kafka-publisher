@@ -9,8 +9,8 @@ public class TransactionService {
     public Transactions getTransactionById(String id){
         return Transactions.builder()
                 .transactionId("3")
-                .serviceName("cdp")
-                .amount("500")
+                .serviceName("cwd")
+                .amount("100")
                 .charges("600")
                 .build();
     }
