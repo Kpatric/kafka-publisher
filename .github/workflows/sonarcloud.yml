@@ -34,4 +34,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.SONAR_GIT_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify -DskipTests=true org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Kpatric_kafka-publisher
+        run: mvn -B verify -DskipTests=true org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Kpatric_kafka-publisher -Dsonar.coverage.exclusions=**/*Test.* -Dsonar.coverage.threshold=80 -Dsonar.qualitygate.wait=true
